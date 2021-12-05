@@ -45,6 +45,7 @@ function App() {
         <Route path="*">
           <Error />
         </Route>
+        
       </Switch>
       <Footer />
     </Router>

@@ -1,7 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+
+const currentDate = new Date().getFullYear();
+
+
+
 const Footer = () => {
-  return <h4>footer</h4>
+
+  return <Wrapper>
+    <h5>&copy;{currentDate}
+    <span> Moja Trgovina </span></h5>
+    
+    <h5>All rights reserved: Zoran Janjic</h5>
+  </Wrapper>
 }
 
 const Wrapper = styled.footer`
