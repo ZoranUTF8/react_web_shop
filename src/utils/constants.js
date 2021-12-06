@@ -3,22 +3,22 @@ import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi'
 export const links = [
   {
     id: 1,
-    text: 'home',
+    text: 'Početna',
     url: '/',
   },
   {
     id: 2,
-    text: 'about',
+    text: 'Kontakt',
     url: '/about',
   },
   {
     id: 3,
-    text: 'products',
+    text: 'Proizvodi',
     url: '/products',
   },
   {
     id: 4,
-    text: 'checkout',
+    text: 'Korpa',
     url: '/checkout',
   },
 ]

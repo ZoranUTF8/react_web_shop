@@ -9,6 +9,9 @@ import { useProductsContext } from "../context/products_context";
 import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
+  const {openSidebar} = useProductsContext();
+
+
   return (
     <NavContainer>
       <div className="nav-center">
@@ -16,7 +19,7 @@ const Nav = () => {
           <Link to="/">
             <img src={logo} alt="main logo" />
           </Link>
-          <button type="submit" className="nav-toggle">
+          <button type="submit" className="nav-toggle" onClick={openSidebar}>
             <FaBars size="30px" />
           </button>
         </div>
