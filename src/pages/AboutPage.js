@@ -1,11 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero } from '../components'
-import aboutImg from '../assets/hero-bcg.jpeg'
+import React from "react";
+import styled from "styled-components";
+import { PageHero } from "../components";
+import aboutImg from "../assets/hero-bcg.jpeg";
 
+//! dodaj kontakt formu
 const AboutPage = () => {
-  return <h4>about page</h4>
-}
+  return (
+    <main>
+      <PageHero title="about"/>
+      <Wrapper className="page section section-center">
+        <img src={aboutImg} alt="main about image" />
+        <article>
+          <div className="title">
+            <h2>Naša prica</h2>
+            <div className="underline"></div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit obcaecati laudantium soluta minima modi reiciendis atque. Possimus, aperiam obcaecati? Consequatur sed minus sunt dolores aspernatur, sit vel distinctio cumque. Eveniet!</p>
+          </div>
+        </article>
+      </Wrapper>
+    </main>
+  );
+};
 
 const Wrapper = styled.section`
   display: grid;
@@ -33,5 +48,5 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
   }
-`
-export default AboutPage
+`;
+export default AboutPage;
