@@ -13,7 +13,7 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
 
-//? SIDEBAR STATE
+//? PRODUCTS INITIAL STATE
 const initialState = {
   isSidebarOpen: false,
   products_loading: false,
@@ -37,6 +37,7 @@ export const ProductsProvider = ({ children }) => {
 
   const getProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
+
     try {
       const response = await axios.get(url);
       const products = response.data;
