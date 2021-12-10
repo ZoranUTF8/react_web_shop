@@ -59,13 +59,11 @@ const products_reducer = (state, action) => {
       };
 
     case GET_SINGLE_PRODUCT_SUCCESS:
-      const single_product = action.payload;
-
       return {
         ...state,
         single_product_loading: false,
         single_product_error: false,
-        single_product,
+        single_product: action.payload,
       };
 
     default:
