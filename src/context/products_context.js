@@ -20,6 +20,9 @@ const initialState = {
   products_error: false,
   products: [],
   featured_products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: [],
 };
 
 const ProductsContext = React.createContext();
@@ -28,22 +31,53 @@ export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN });
+    dispatch({
+      type: SIDEBAR_OPEN,
+    });
   };
 
   const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE });
+    dispatch({
+      type: SIDEBAR_CLOSE,
+    });
   };
 
   const getProducts = async (url) => {
-    dispatch({ type: GET_PRODUCTS_BEGIN });
+    dispatch({
+      type: GET_PRODUCTS_BEGIN,
+    });
 
     try {
       const response = await axios.get(url);
       const products = response.data;
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: products,
+      });
     } catch (error) {
-      dispatch({ type: GET_PRODUCTS_ERROR });
+      dispatch({
+        type: GET_PRODUCTS_ERROR,
+      });
+    }
+  };
+
+  const getSingleProduct = async (url) => {
+    dispatch({
+      type: GET_SINGLE_PRODUCT_BEGIN,
+    });
+
+    try {
+      const response = await axios.get(url);
+      const product = response.data;
+      console.log(product);
+      dispatch({
+        type: GET_SINGLE_PRODUCT_SUCCESS,
+        payload: product,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_SINGLE_PRODUCT_ERROR,
+      });
     }
   };
 
@@ -53,8 +87,15 @@ export const ProductsProvider = ({ children }) => {
 
   //! main return
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
-      {children}
+    <ProductsContext.Provider
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+      }}
+    >
+      {" "}
+      {children}{" "}
     </ProductsContext.Provider>
   );
 };

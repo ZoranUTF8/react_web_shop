@@ -11,7 +11,6 @@ import {
 
 const products_reducer = (state, action) => {
   switch (action.type) {
-
     case SIDEBAR_OPEN:
       return {
         ...state,
@@ -41,8 +40,34 @@ const products_reducer = (state, action) => {
         products: action.payload,
         featured_products,
       };
+
     case GET_PRODUCTS_ERROR:
       return { ...state, products_loading: false, products_error: true };
+
+    case GET_SINGLE_PRODUCT_BEGIN:
+      return {
+        ...state,
+        single_product_loading: true,
+        single_product_error: false,
+      };
+
+    case GET_SINGLE_PRODUCT_ERROR:
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product_error: true,
+      };
+
+    case GET_SINGLE_PRODUCT_SUCCESS:
+      const single_product = action.payload;
+
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product_error: false,
+        single_product,
+      };
+
     default:
       new Error(`No matching product type.`);
   }

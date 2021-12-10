@@ -18,5 +18,11 @@
 
 how to collect email values and get them to subscribe using Formspree 
 
-10. Fetch the products from the api services,contact page"
+10. Fetch the products from the api services using axios
+
+11. Set up the featured products, products/
+
+12. Set up the format type function 
+
+13. Get the single product
 

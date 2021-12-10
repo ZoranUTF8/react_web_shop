@@ -12,7 +12,7 @@ const AboutPage = () => {
         <img src={aboutImg} alt="main about image" />
         <article>
           <div className="title">
-            <h2>Naša prica</h2>
+            <h2>Naša priča</h2>
             <div className="underline"></div>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit obcaecati laudantium soluta minima modi reiciendis atque. Possimus, aperiam obcaecati? Consequatur sed minus sunt dolores aspernatur, sit vel distinctio cumque. Eveniet!</p>
           </div>
