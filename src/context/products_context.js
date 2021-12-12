@@ -69,7 +69,7 @@ export const ProductsProvider = ({ children }) => {
     try {
       const response = await axios.get(url);
       const product = response.data;
-      console.log(product);
+
       dispatch({
         type: GET_SINGLE_PRODUCT_SUCCESS,
         payload: product,
