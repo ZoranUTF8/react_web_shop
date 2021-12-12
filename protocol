@@ -25,8 +25,10 @@ how to collect email values and get them to subscribe using Formspree
 12. Set up the format type function 
 
 13. Get the single product and pass it on as we only call it when we select a single product
-inside the single product page we get the id wiht useParams
+inside the single product page we get the id with useParams
 
-We use useHistory hook to navigate away from the page instead of redirect from react router dom
+We use useHistory hook to navigate away from the page instead of redirect from react router dom if error occurs
+
+14. set up single product images component
 
 
