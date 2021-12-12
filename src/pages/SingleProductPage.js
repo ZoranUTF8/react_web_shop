@@ -46,7 +46,47 @@ const SingleProductPage = () => {
   } else if (error) {
     return <Error />;
   } else {
-    return <h4>Single product page</h4>;
+    const {
+      name,
+      price,
+      description,
+      stock,
+      stars,
+      reviews,
+      id: productSku,
+      company,
+      images,
+    } = product;
+    return (
+      <Wrapper>
+        <PageHero title={name} product />
+        <div className="section section-center page">
+          <Link to="/products" className="btn">
+            nazad na sve proizvode
+          </Link>
+
+          <div className="product-center">
+            <ProductImages />
+            <section className="content">
+              <h2>{name}</h2>
+              <Stars />
+              <h5 className="price">{formatPrice(price)}</h5>
+              <p className="desc">{description}</p>
+              <p className="info">
+                <span>Stanje:</span>
+                {stock > 0 ? "Dostupno" : "Nije dostupno"}
+              </p>
+              <p className="info">
+                <span>šifra proizvoda:</span>
+                {productSku}
+              </p>
+              <hr />
+              {stock > 0 && <AddToCart />}
+            </section>
+          </div>
+        </div>
+      </Wrapper>
+    );
   }
 };
 
