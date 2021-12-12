@@ -8,6 +8,28 @@ import AmountButtons from "./AmountButtons";
 const AddToCart = ({ product }) => {
   const { id, stock, colors } = product;
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increaseAmount = () => {
+    setAmount((oldAmount) => {
+      let tempAmount = oldAmount + 1;
+
+      if (tempAmount > stock) {
+        tempAmount = stock;
+      }
+      return tempAmount;
+    });
+  };
+  const decreaseAmount = () => {
+    setAmount((oldAmount) => {
+      let tempAmount = oldAmount - 1;
+
+      if (tempAmount < 1) {
+        tempAmount = 1;
+      }
+      return tempAmount;
+    });
+  };
 
   return (
     <Wrapper>
@@ -30,7 +52,16 @@ const AddToCart = ({ product }) => {
           })}
         </div>
       </div>
-      <div className="btn-container"></div>
+      <div className="btn-container">
+        <AmountButtons
+          amount={amount}
+          increaseAmount={increaseAmount}
+          decreaseAmount={decreaseAmount}
+        />
+        <Link to="/carst" className="btn">
+          Dodaj u korpu
+        </Link>
+      </div>
     </Wrapper>
   );
 };
@@ -77,7 +108,7 @@ const Wrapper = styled.section`
 
   .btn {
     margin-top: 1rem;
-    width: 140px;
+    width: 10rem;
   }
 `;
 export default AddToCart;
