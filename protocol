@@ -31,4 +31,8 @@ We use useHistory hook to navigate away from the page instead of redirect from r
 
 14. set up single product images component
 
+15. set up stars component
+
+16. set up add to cart component
+
 
