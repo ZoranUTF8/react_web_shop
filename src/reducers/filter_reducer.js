@@ -10,8 +10,21 @@ import {
 } from '../actions'
 
 const filter_reducer = (state, action) => {
-  return state
-  throw new Error(`No Matching "${action.type}" - action type`)
+
+  switch (action.type) {
+
+    case LOAD_PRODUCTS: {
+      return {
+        ...state,
+        all_products: [...action.payload], // copy the values instead the memory location using the ...
+        filtered_products: [...action.payload]
+      }
+    }
+
+    default:
+      throw new Error(`Error in filter reducer line 22.`);
+
+  }
 }
 
 export default filter_reducer

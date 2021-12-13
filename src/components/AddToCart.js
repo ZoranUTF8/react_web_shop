@@ -58,7 +58,7 @@ const AddToCart = ({ product }) => {
           increaseAmount={increaseAmount}
           decreaseAmount={decreaseAmount}
         />
-        <Link to="/carst" className="btn">
+        <Link to="/cart" className="btn">
           Dodaj u korpu
         </Link>
       </div>

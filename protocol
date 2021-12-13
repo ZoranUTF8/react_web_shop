@@ -35,4 +35,10 @@ We use useHistory hook to navigate away from the page instead of redirect from r
 
 16. set up add to cart component
 
+17. set up filter context
+set up and action that  takes products from products context and dumps them into filter context
+we need to place the provider inside another one if we want its data.
+
+18. set up products page
+
 
