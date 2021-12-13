@@ -39,6 +39,8 @@ We use useHistory hook to navigate away from the page instead of redirect from r
 set up and action that  takes products from products context and dumps them into filter context
 we need to place the provider inside another one if we want its data.
 
-18. set up products page
-
+18. set up products page and add the rest of the components
+18.1 set up Product list
+18.2 set up Grid view
+18.3  set up List view
 
