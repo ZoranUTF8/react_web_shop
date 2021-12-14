@@ -36,6 +36,13 @@ const filter_reducer = (state, action) => {
 
     }
 
+    case UPDATE_SORT: {
+      return {
+        ...state,
+        sort: action.payload
+      }
+    }
+
     default:
       throw new Error(`Error in filter reducer line 22.`);
 
