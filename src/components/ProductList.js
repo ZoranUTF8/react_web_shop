@@ -17,7 +17,7 @@ const ProductList = () => {
     return <ListView filtered_products={filtered_products} />
   }
 
-  return <GridView products={filtered_products}>product list</GridView>;
+  return <GridView filtered_products={filtered_products}>product list</GridView>;
 };
 
 export default ProductList;

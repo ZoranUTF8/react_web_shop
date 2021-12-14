@@ -21,6 +21,21 @@ const filter_reducer = (state, action) => {
       }
     }
 
+    case SET_GRIDVIEW: {
+      return {
+        ...state,
+        grid_view: true
+      }
+    }
+
+    case SET_LISTVIEW: {
+      return {
+        ...state,
+        grid_view: false
+      }
+
+    }
+
     default:
       throw new Error(`Error in filter reducer line 22.`);
 
