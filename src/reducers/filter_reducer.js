@@ -43,6 +43,43 @@ const filter_reducer = (state, action) => {
       }
     }
 
+    case SORT_PRODUCTS: {
+      const {
+        sort,
+        filtered_products
+      } = state;
+
+      let tempProducts = [...filtered_products];
+
+      switch (sort) {
+        case "price-lowest":
+          tempProducts = tempProducts.sort((curr, next) => curr.price - next.price)
+          break;
+        case "price-highest":
+          tempProducts = tempProducts.sort((curr, next) => next.price - curr.price)
+          break;
+        case "name-a":
+          tempProducts = tempProducts.sort((curr, next) => {
+            return curr.name.localeCompare(next.name);
+          })
+          break;
+        case "name-z":
+          tempProducts = tempProducts.sort((curr, next) => {
+            return next.name.localeCompare(curr.name);
+          })
+          break;
+
+        default:
+          console.log("No such option. filter reducer line 69");
+          break;
+      }
+
+      return {
+        ...state,
+        filtered_products: tempProducts
+      }
+    }
+
     default:
       throw new Error(`Error in filter reducer line 22.`);
 
