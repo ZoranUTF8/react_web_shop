@@ -44,4 +44,9 @@ we need to place the provider inside another one if we want its data.
 18.2 set up Grid view
 18.3  set up List view
 
+19. Set up sort component
+19.1 basic setup
+19.2 view buttons
+19.3  set up sorting in filter reducer
+
 

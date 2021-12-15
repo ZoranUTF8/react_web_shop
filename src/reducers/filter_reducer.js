@@ -7,66 +7,73 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
-} from '../actions'
+} from "../actions";
 
 const filter_reducer = (state, action) => {
-
   switch (action.type) {
-
     case LOAD_PRODUCTS: {
+      //? get the max price of all products
+      let maxPrice = action.payload.map((product) => product.price);
+      maxPrice = Math.max(...maxPrice);
+
       return {
         ...state,
-        all_products: [...action.payload], // copy the values instead the memory location using the ...
-        filtered_products: [...action.payload]
-      }
+        all_products: [...action.payload], //? copy the values instead the memory location using the ...
+        filtered_products: [...action.payload],
+        filters: {
+          ...state.filters,
+          max_price: maxPrice,
+          price: maxPrice,
+        },
+      };
     }
 
     case SET_GRIDVIEW: {
       return {
         ...state,
-        grid_view: true
-      }
+        grid_view: true,
+      };
     }
 
     case SET_LISTVIEW: {
       return {
         ...state,
-        grid_view: false
-      }
-
+        grid_view: false,
+      };
     }
 
     case UPDATE_SORT: {
       return {
         ...state,
-        sort: action.payload
-      }
+        sort: action.payload,
+      };
     }
 
     case SORT_PRODUCTS: {
-      const {
-        sort,
-        filtered_products
-      } = state;
+      const { sort, filtered_products } = state;
 
       let tempProducts = [...filtered_products];
 
       switch (sort) {
         case "price-lowest":
-          tempProducts = tempProducts.sort((curr, next) => curr.price - next.price)
+          tempProducts = tempProducts.sort(
+            (curr, next) => curr.price - next.price
+          );
           break;
         case "price-highest":
-          tempProducts = tempProducts.sort((curr, next) => next.price - curr.price)
+          tempProducts = tempProducts.sort(
+            (curr, next) => next.price - curr.price
+          );
           break;
         case "name-a":
           tempProducts = tempProducts.sort((curr, next) => {
             return curr.name.localeCompare(next.name);
-          })
+          });
           break;
         case "name-z":
           tempProducts = tempProducts.sort((curr, next) => {
             return next.name.localeCompare(curr.name);
-          })
+          });
           break;
 
         default:
@@ -76,14 +83,28 @@ const filter_reducer = (state, action) => {
 
       return {
         ...state,
-        filtered_products: tempProducts
-      }
+        filtered_products: tempProducts,
+      };
     }
 
+    case UPDATE_FILTERS: {
+      const { name, value } = action.payload;
+
+      return {
+        ...state,
+        filters: { ...state.filters, [name]: value },
+      };
+    }
+
+    case FILTER_PRODUCTS:{
+      console.log('====================================');
+      console.log("filtering products");
+      console.log('====================================');
+      return{...state}
+    }
     default:
       throw new Error(`Error in filter reducer line 22.`);
-
   }
-}
+};
 
-export default filter_reducer
+export default filter_reducer;
