@@ -121,7 +121,35 @@ const filter_reducer = (state, action) => {
           return product.name.toLowerCase().startsWith(text);
         });
       }
-
+      //* Category filtering
+      else if (category !== "all") {
+        tempProducts = tempProducts.filter(
+          (product) => product.category === category
+        );
+      }
+      //* Company filtering
+      else if (company !== "all") {
+        tempProducts = tempProducts.filter((product) => {
+          return product.company === company;
+        });
+      }
+      //* Color filtering
+      else if (color !== "all") {
+        tempProducts = tempProducts.filter((product) => {
+          return product.colors.find((col) => col === color);
+        });
+      }
+      //* Price filtering
+      else if (price !== 0) {
+        tempProducts = tempProducts.filter((product) => product.price <= price);
+      }
+      //* Shipping filtering
+      else if (shipping) {
+        tempProducts = tempProducts.filter(
+          (product) => product.shipping === true
+        );
+      }
+      //! Main return
       return {
         ...state,
         filtered_products: tempProducts,
