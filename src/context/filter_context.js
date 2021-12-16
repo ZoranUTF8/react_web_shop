@@ -72,6 +72,10 @@ export const FilterProvider = ({ children }) => {
     else if (name === "color") {
       value = evt.target.dataset.color;
     }
+    //? Cast price value to num
+    else if (name === "price") {
+      value = Number(value);
+    }
 
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
