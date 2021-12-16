@@ -5,7 +5,7 @@ import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 
 const Filters = () => {
-  //? GET VALUES FROM THE STATE 
+  //? GET VALUES FROM THE STATE
   const {
     filters: { text, company, category, min_price, max_price, price, shipping },
     all_products,
@@ -17,12 +17,13 @@ const Filters = () => {
   const categories = getUniqueValues(all_products, "category");
   const companies = getUniqueValues(all_products, "company");
   const colors = getUniqueValues(all_products, "colors");
-  console.log(colors);
+
   //! Main return
   return (
     <Wrapper>
       <div className="content">
         <form onSubmit={(evt) => evt.preventDefault()}>
+          {/*  Search input */}
           <div className="form-control">
             <input
               type="text"
@@ -32,6 +33,27 @@ const Filters = () => {
               value={text}
               onChange={updateFilters}
             />
+          </div>
+          {/* Categories filter */}
+          <div className="form-control">
+            <h5>kategorije</h5>
+            <div>
+              {categories.map((cat, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    name="category"
+                    type="button"
+                    className={`${
+                      category === cat.toLowerCase() ? "active" : null
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </form>
       </div>

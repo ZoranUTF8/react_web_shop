@@ -63,6 +63,11 @@ export const FilterProvider = ({ children }) => {
     let name = evt.target.name;
     let value = evt.target.value;
 
+    //? Get the category from the button pressed
+    if (name === "category") {
+      value = evt.target.textContent;
+    }
+
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   //? Sets back filters to defaults

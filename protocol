@@ -50,6 +50,6 @@ we need to place the provider inside another one if we want its data.
 19.3  set up basic sorting in filter reducer and filter context
 
 20. Set up filters component
-20.1 
+20.1 Add the filters for categories, color and comapany and get the data returned from helpers.js
 
 
