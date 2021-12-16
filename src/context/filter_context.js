@@ -76,11 +76,17 @@ export const FilterProvider = ({ children }) => {
     else if (name === "price") {
       value = Number(value);
     }
+    //? Check for shipping checkbox value
+    else if (name === "shipping") {
+      value = evt.target.checked;
+    }
 
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   //? Sets back filters to defaults
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
   //! main return
   return (
     <FilterContext.Provider

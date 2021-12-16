@@ -133,7 +133,22 @@ const Filters = () => {
               />
             </p>
           </div>
+          {/* FREE SHIPPING */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">besplatna dostava</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              value={shipping}
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
         </form>
+        {/* CLEAR FILTERS */}
+        <button type="button" className="clear-btn" onClick={clearFilters}>
+        Obriši filtere
+        </button>
       </div>
     </Wrapper>
   );

@@ -104,6 +104,21 @@ const filter_reducer = (state, action) => {
         ...state,
       };
     }
+
+    case CLEAR_FILTERS: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          company: "all",
+          category: "all",
+          color: "all",
+          price: state.filters.max_price,
+          shipping: false,
+        },
+      };
+    }
     default:
       throw new Error(`Error in filter reducer line 22.`);
   }
