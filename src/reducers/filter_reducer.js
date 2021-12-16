@@ -92,15 +92,17 @@ const filter_reducer = (state, action) => {
 
       return {
         ...state,
-        filters: { ...state.filters, [name]: value },
+        filters: {
+          ...state.filters,
+          [name]: value,
+        },
       };
     }
 
-    case FILTER_PRODUCTS:{
-      console.log('====================================');
-      console.log("filtering products");
-      console.log('====================================');
-      return{...state}
+    case FILTER_PRODUCTS: {
+      return {
+        ...state,
+      };
     }
     default:
       throw new Error(`Error in filter reducer line 22.`);

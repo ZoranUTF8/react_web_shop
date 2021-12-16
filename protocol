@@ -47,6 +47,9 @@ we need to place the provider inside another one if we want its data.
 19. Set up sort component
 19.1 basic setup
 19.2 view buttons
-19.3  set up sorting in filter reducer
+19.3  set up basic sorting in filter reducer and filter context
+
+20. Set up filters component
+20.1 
 
 

@@ -5,6 +5,7 @@ import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 
 const Filters = () => {
+  //? GET VALUES FROM THE STATE 
   const {
     filters: { text, company, category, min_price, max_price, price, shipping },
     all_products,
@@ -12,6 +13,11 @@ const Filters = () => {
     clearFilters,
   } = useFilterContext();
 
+  //? GET UNIQUE VALUES FROM THE ITEMS
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
+  console.log(colors);
   //! Main return
   return (
     <Wrapper>
