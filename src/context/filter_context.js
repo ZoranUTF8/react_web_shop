@@ -23,6 +23,7 @@ const initialState = {
     text: "",
     company: "all",
     category: "all",
+    color: "all",
     min_price: 0,
     max_price: 0,
     price: 0,
@@ -66,6 +67,10 @@ export const FilterProvider = ({ children }) => {
     //? Get the category from the button pressed
     if (name === "category") {
       value = evt.target.textContent;
+    }
+    //? Get the color chose from the Filters
+    else if (name === "color") {
+      value = evt.target.dataset.color;
     }
 
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });

@@ -51,5 +51,7 @@ we need to place the provider inside another one if we want its data.
 
 20. Set up filters component
 20.1 Add the filters for categories, color and comapany and get the data returned from helpers.js
+20.2 Add filter for compant
+20.3 Add filter for collors
 
 
