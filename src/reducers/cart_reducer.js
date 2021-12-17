@@ -8,10 +8,15 @@ import {
 
 const cart_reducer = (state, action) => {
   switch (action.type) {
-    
+
     case ADD_TO_CART: {
 
-      const { id, color, amount, product } = action.payload;
+      const {
+        id,
+        color,
+        amount,
+        product
+      } = action.payload;
       //? check if item is inside the cart already
       const tempItem = state.cart.find((i) => i.id === id + color);
 
@@ -21,19 +26,23 @@ const cart_reducer = (state, action) => {
 
           if (cartItem.id === id + color) {
             let newAmount = cartItem.amount + amount;
-            
+
             //? if item equal to max stock than just return the max amount
             if (newAmount > cartItem.max) {
               newAmount = cartItem.max;
             }
-            return { ...cartItem, amount: newAmount };
-          } 
-          else 
-          {
+            return {
+              ...cartItem,
+              amount: newAmount
+            };
+          } else {
             return cartItem;
           }
         })
-        return { ...state, cart: tempCart };
+        return {
+          ...state,
+          cart: tempCart
+        };
       } else {
         //? create new item if not inside the cart already
         const newItem = {
@@ -45,11 +54,31 @@ const cart_reducer = (state, action) => {
           price: product.price,
           max: product.stock,
         };
-        return { ...state, cart: [...state.cart, newItem] };
+        return {
+          ...state,
+          cart: [...state.cart, newItem]
+        };
       }
     }
 
-    
+    case REMOVE_CART_ITEM: {
+      const tempCart = state.cart.filter((item) => item.id != action.payload)
+      return {
+        ...state,
+        cart: tempCart
+      }
+    }
+
+    case CLEAR_CART: {
+      return {
+        ...state,
+        cart: []
+      }
+    }
+
+
+
+
     default:
       throw new Error(`No Matching "${action.type}" - action type`);
   }

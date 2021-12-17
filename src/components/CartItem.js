@@ -30,9 +30,7 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
       <button
         type="button"
         className="remove-btn"
-        onClick={() => {
-          removeItem(id);
-        }}
+        onClick={() => removeItem(id)}
       >
         <FaTrash />
       </button>

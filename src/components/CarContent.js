@@ -23,7 +23,7 @@ const CartContent = () => {
         <button
           type="button"
           className="link-btn clear-btn"
-          onClick={() => clearCart}
+          onClick={() => clearCart()}
         >
           očisti korpu za kupovinu
         </button>
