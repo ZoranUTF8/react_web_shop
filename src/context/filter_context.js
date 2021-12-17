@@ -43,7 +43,7 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
-    // ? when produts and sort and filters change than run sort products
+    // ? when produtcs and sort and filters change than run sort products
     dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
