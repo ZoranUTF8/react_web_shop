@@ -22,7 +22,7 @@ const initialState = {
   cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
-  shipping_fee: 10,
+  shipping_fee: 1000,
 };
 
 const CartContext = React.createContext();
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   const removeItem = (id) => {};
   //? change amount
   const toggleAmount = (id, value) => {};
-  //? celar cart
+  //? clear cart
   const clearCart = () => {};
 
   useEffect(() => {

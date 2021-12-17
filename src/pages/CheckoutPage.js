@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 const CheckoutPage = () => {
   return (
     <main>
-      <PageHero title="korpa" />
-      <Wrapper className="page"><h1>
-        Platite ovdje
-      </h1></Wrapper>
+      <PageHero title="Završi narudžbu" />
+      <Wrapper className="page">
+        <h1>Platite ovdje</h1>
+      </Wrapper>
     </main>
   );
 };

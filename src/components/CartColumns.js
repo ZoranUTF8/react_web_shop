@@ -8,7 +8,7 @@ const CartColumns = () => {
         <h5>proizvod</h5>
         <h5>cijena</h5>
         <h5>količina</h5>
-        <h5>suma stavke</h5>
+        <h5>ukupno</h5>
         <span></span>
       </div>
       <hr />
