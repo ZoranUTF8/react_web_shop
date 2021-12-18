@@ -10,7 +10,7 @@ const ProductsPage = () => {
         <div className="section-center products">
           <Filters />
           <div>
-            <Sort></Sort>
+            <Sort/>
             <ProductList />
           </div>
         </div>

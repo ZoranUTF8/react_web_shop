@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
   const history = useHistory();
-  //? get chosen product od
+  //? get chosen product id
   const { id } = useParams();
   //? get the product state values from the products context
   const {

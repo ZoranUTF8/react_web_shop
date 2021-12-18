@@ -11,7 +11,7 @@ const AddToCart = ({ product }) => {
   const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
-  const increaseAmount = () => {
+  const increase = () => {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1;
 
@@ -21,7 +21,7 @@ const AddToCart = ({ product }) => {
       return tempAmount;
     });
   };
-  const decreaseAmount = () => {
+  const decrease = () => {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount - 1;
 
@@ -56,8 +56,8 @@ const AddToCart = ({ product }) => {
       <div className="btn-container">
         <AmountButtons
           amount={amount}
-          increaseAmount={increaseAmount}
-          decreaseAmount={decreaseAmount}
+          increase={increase}
+          decrease={decrease}
         />
         <Link
           to="/cart"
