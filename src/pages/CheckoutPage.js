@@ -6,14 +6,33 @@ import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {
+  const { cart } = useCartContext();
+
+  //! Main return
   return (
     <main>
       <PageHero title="Završi narudžbu" />
       <Wrapper className="page">
-        <h1>Platite ovdje</h1>
+        {cart.length < 1 ? (
+          <div className="empty">
+            <h2>Vaša korpa je prazna</h2>
+            <Link to={"/products"} className="btn">
+              svi proizvodi
+            </Link>{" "}
+          </div>
+        ) : (
+          <StripeCheckout />
+        )}
       </Wrapper>
     </main>
   );
 };
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .empty {
+    text-align: center;
+  }
+`;
 export default CheckoutPage;
