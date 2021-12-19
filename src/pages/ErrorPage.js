@@ -13,6 +13,7 @@ const ErrorPage = () => {
           height="270"
           frameBorder="0"
           allowFullScreen
+          title="error img"
         ></iframe>
         <h3>Žao nam je, stranica koju ste tražili nije pronađena.</h3>
         <Link to="/" className="btn">

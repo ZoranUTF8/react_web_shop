@@ -16,11 +16,6 @@ export const links = [
     text: 'Proizvodi',
     url: '/products',
   },
-  {
-    id: 4,
-    text: 'Kasa',
-    url: '/checkout',
-  },
 ]
 
 export const services = [

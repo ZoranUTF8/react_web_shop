@@ -29,6 +29,7 @@ const SingleProductPage = () => {
   //? when we load the single product page get the selected product and when the id changes
   useEffect(() => {
     getSingleProduct(`${single_product_url}${id}`);
+    // eslint-disable-next-line
   }, [id]);
 
   //? if error happens than go back to home screen after 3 seconds
@@ -38,6 +39,7 @@ const SingleProductPage = () => {
         history.push("/");
       }, 3000);
     }
+    // eslint-disable-next-line
   }, [error]);
 
   //? check final response and display according to it
@@ -79,6 +81,10 @@ const SingleProductPage = () => {
               <p className="info">
                 <span>šifra proizvoda:</span>
                 {productSku}
+              </p>
+              <p className="info">
+                <span>proizvođač</span>
+                {company}
               </p>
               <hr />
               {stock > 0 && <AddToCart product={product} />}
