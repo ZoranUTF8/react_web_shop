@@ -48,10 +48,60 @@ const CheckoutForm = () => {
     },
   };
 
+  const createPaymentIntent = async () => {
+    try {
+      const data = await axios.post(
+        "/.netlify/functions/create-payment-intent",
+        JSON.stringify({ cart, shipping_fee, total_amount })
+      )
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
-  
+  useEffect(() => {
+    createPaymentIntent();
+    // eslint-disable-next-line
+  }, []);
+
+  const handleChange = async (event) => {};
+  const handleSubmit = async (ev) => {};
+
   //! Main return
-  return <h4>hello from Stripe Checkout </h4>;
+  return (
+    <div>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <CardElement
+          id="card-element"
+          options={cardStyle}
+          onChange={handleChange}
+        />
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span id="button-text">
+            {processing ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Plati"
+            )}
+          </span>
+        </button>
+        {/* SHOW ANY ERROR THAT HAPPENS WHEN PROCCESSING THE PAYMENET */}
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        {/* SHOW SUCCESS MESSAGE UPON COMPLETION */}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
+          Payment succedded, see the result in your
+          <a href={`https://dashboard.stripe.com/test/payments`}>
+            Stripe dashboard
+          </a>
+          Refresh the page to pay again
+        </p>
+      </form>
+    </div>
+  );
 };
 
 const StripeCheckout = () => {
