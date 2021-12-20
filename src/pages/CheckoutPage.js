@@ -6,6 +6,7 @@ import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {
+  
   const { cart } = useCartContext();
 
   //! Main return
