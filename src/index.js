@@ -7,8 +7,7 @@ import { FilterProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
 import { UserProvider } from "./context/user_context";
 import { Auth0Provider } from "@auth0/auth0-react";
-// dev-urtk8sp8.us.auth0.com
-// ZMNZZcAaKFONDIKLzmouLhv4Oc6W4P7Y
+
 const domain = process.env.REACT_APP_DOMAIN;
 const clientId = process.env.REACT_APP_CLIENTID;
 
