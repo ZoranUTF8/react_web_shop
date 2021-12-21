@@ -67,12 +67,58 @@ const CheckoutForm = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleChange = async (event) => {};
-  const handleSubmit = async (ev) => {};
+  const handleChange = async (event) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
+  //? payment submit
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+
+    if (payload.error) {
+      setError(`Plaćanje nije uspjelo. ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      
+      //? redirect to home
+      setTimeout(() => {
+        clearCart();
+        history.push("/");
+      }, 5000);
+    }
+  };
 
   //! Main return
   return (
     <div>
+      {succeeded ? (
+        <article>
+          <h4>Hvala</h4>
+          <h4>Vaša uplata je uspjela</h4>
+          <h4>Uskoro preusmjeravanje na početnu stranicu</h4>
+        </article>
+      ) : (
+        <article>
+          Zdravo, {myUser && myUser.name}
+          <p>
+            Vaš ukupni iznos je{" "}
+            <strong>{formatPrice(shipping_fee + total_amount)}</strong>
+          </p>
+          <p>
+            Broj vaše test kartice: <strong>4242 4242 4242 4242</strong>
+          </p>
+        </article>
+      )}
+
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement
           id="card-element"
@@ -96,11 +142,11 @@ const CheckoutForm = () => {
         )}
         {/* SHOW SUCCESS MESSAGE UPON COMPLETION */}
         <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succedded, see the result in your
+        Plaćanje je uspjelo, pogledajte rezultat u<br/>
           <a href={`https://dashboard.stripe.com/test/payments`}>
-            Stripe dashboard
+            Stripe tabli
           </a>
-          Refresh the page to pay again
+           <br/>Osvježite stranicu za ponovno plaćanje
         </p>
       </form>
     </div>
